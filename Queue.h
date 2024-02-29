@@ -11,35 +11,27 @@ void enqueue_struct(Queue* q, int x){
     new_node->nextPtr = NULL;
     if (q->headPtr == NULL){
       q->headPtr= new_node;
-      //printf("set new head is\n",q->headPtr->data);
     } 
     else
       q->tailPtr->nextPtr = new_node;
     q->tailPtr = new_node;
-    /*Finish enqueue */
+    /*Finish enqueue*/
     q->size++;
-    //printf("enq head %d \n",q->headPtr->data);
-    //printf("enq tail %d \n",q->tailPtr->data);
   }
 }
 
 
 int dequeue_struct(Queue *q){
-    NodePtr t=q->headPtr;
-    //printf("\n\nhead is %d\n",t->data) ; 
+    NodePtr t=q->headPtr; 
     if(t){
       int value= t->data;
-      /*Finish dequeue */
+      /*Finish dequeue*/
       q->headPtr = t->nextPtr;
-      q->size--;
-      //printf("\n\nhead is %d\n",q->headPtr->data) ; 
+      q->size--; 
       if (q->headPtr==NULL) {
         q->tailPtr = NULL;
-        //printf("NULL\n");
       }
       
-      //printf ("deq %d\n",value);
-      //printf("next q %d\n",q->headPtr->data);
       free(t);
       return value;
     }
